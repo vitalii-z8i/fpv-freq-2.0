@@ -1,11 +1,10 @@
+'use client';
 
 import React from "react";
-
 import channels from "../../../public/channels.json";
 
-export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected?: Function }) {
+export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected?: (ch: FPVChannel) => void }) {
     const [ searchTerm, setSearchTerm ] = React.useState('')
-    const [ selectedChannel, setSelectedChannel ] = React.useState({} as unknown as FPVChannel)
 
     function handleFocus() {
         setSearchTerm('')
@@ -17,9 +16,7 @@ export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected
 
     function selectChannel(ch: FPVChannel) {
         setSearchTerm('')
-
         if (ch?.channel) {
-            setSelectedChannel(ch)
             onSelected(ch)
         }
     }
@@ -48,7 +45,6 @@ export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected
     }
 
     return (
-        <>
         <div className="relative mb-4 z-10">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                 <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -56,18 +52,17 @@ export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected
                 </svg>
             </div>
             <input type="text"
-                   className="rounded-lg outline-none focus:rounded-b-none ps-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                   placeholder="5.8 канал, або частота"
-                   value={searchTerm}
-                   onChange={(e) => { setSearchTerm(e.target?.value)}}
-                   onKeyDown={(e) => { if (e.key === 'Enter') { selectChannel(channelsOptions()[0]) } } }
-                   onFocus={handleFocus}
-                   onBlur={handleBlur}
+                    className="rounded-lg outline-none focus:rounded-b-none ps-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="5.8 канал, або частота"
+                    value={searchTerm}
+                    onChange={(e) => { setSearchTerm(e.target?.value)}}
+                    onKeyDown={(e) => { if (!!searchTerm && e.key === 'Enter') { selectChannel(channelsOptions()[0]) } } }
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
             />
             <ul className={`${searchTerm ? 'block' : 'hidden'} absolute bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-b-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
                 {channelsList()}
             </ul>
         </div>
-        </>
     )
 }

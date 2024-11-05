@@ -19,16 +19,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        media: '(prefers-color-scheme: light)',
-        url: '/images/icon.png',
-        href: '/images/icon.png',
-      },
-      {
-        media: '(prefers-color-scheme: dark)',
-        url: '/images/icon-dark.png',
-        href: '/images/icon-dark.png',
-      },
-      {
         rel: 'icon',
         type: 'image/png',
         url: '/images/favicon-96x96.png',
@@ -75,16 +65,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
         <Nav>
-          <>
             <NavItem href="/">Вибір Каналу</NavItem>
             <NavItem href="/table">Таблиця Каналів</NavItem>
-          </>
         </Nav>
-        <div className="max-w-screen-xl mx-auto px-4 py-8 mb-6">
+        <div className="md:pb-4 max-w-screen-xl mx-auto px-4 py-8 mb-10">
           {children}
         </div>
         <footer className="z-10 bg-inherit fixed bottom-0 right-0 rounded-tl-md border-black dark:border-white border-t border-l py-1 px-2">Розробив - Друг Портер 🍺</footer>

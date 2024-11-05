@@ -1,8 +1,9 @@
 'use client';
+
 import React from 'react';
 import Logo from './logo';
 
-export default function Nav({ children }: { children: React.JSX.Element }) {
+export default function Nav({ children }: { children: React.JSX.Element | React.JSX.Element[] }) {
     const [ collapsed, setCollapsed ] = React.useState(true)
 
     function toggleNavbar() {
@@ -20,7 +21,7 @@ export default function Nav({ children }: { children: React.JSX.Element }) {
                     </svg>
                 </button>
                 <div className={`${collapsed && 'hidden'} w-full md:block md:w-auto`}>
-                    <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 bg-gray-50">
+                    <ul className="font-medium flex flex-col mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 bg-gray-50" onClick={() => {setCollapsed(true)}}>
                         {children}
                     </ul>
                 </div>

@@ -1,8 +1,7 @@
 import React from "react";
-import channels from "../../../public/channels.json";
 import CalculateHarmonicas from "../functions/calculate-harmonicas";
 
-export default function ChannelHarmonicas({ channel }: { channel: FPVChannel, onUpdate?: Function }) {
+export default function ChannelHarmonicas({ channel }: { channel: FPVChannel }) {
     if (channel?.channel) {
         return (
             <div className="border-2 md:border-0 border-gray-100 rounded-lg dark:border-gray-700 py-2 px-2 md:px-0">
