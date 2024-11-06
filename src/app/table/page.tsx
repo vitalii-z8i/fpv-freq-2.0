@@ -61,9 +61,9 @@ export default function Table() {
                             onClick={() => {toggleChannel(ch.id)}}
                         >
                             <div className={`
-                                    m-1 p-2 px-1 border box-border border-gray-600 bg-gray-50 dark:bg-gray-700 rounded-lg relative
+                                    m-1 p-2 px-1 border box-border bg-gray-50 dark:bg-gray-700 rounded-lg relative
                                     ${(isInterferred(ch.id)) ? 'bg-red-400 text-red-300 dark:bg-red-900 dark:text-red-400 dark:border-red-900' : ''}
-                                    ${(isSelected(ch.id)) ? 'border border-blue-500 rounded-tr-none ' : ''}
+                                    ${(isSelected(ch.id)) ? 'border-blue-500 rounded-tr-none ' : 'border-gray-600'}
                                 `}>
                                 {(isSelected(ch.id)) && (
                                     <div className="absolute top-0 right-0 bg-blue-500 rounded-bl-lg">
