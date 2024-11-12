@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <>
             <ChannelsSelect onSelected={renderChannel}/>
-            <div className="w-full h-full text-center py-5">
+            <div className="w-full h-full text-center py-5 pb-10">
                 <h3 className="text-lg">Оберіть канал вище щоб побачити список каналів, які можуть вам заважати</h3>
             </div>
         </>
