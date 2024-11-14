@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Калькулятор конфліктів частот для FPV',
     start_url: '/',
     display: 'standalone',
-    background_color: '#1F2937',
+    background_color: '#27272a',
     orientation: 'any',
     icons: [
         {
