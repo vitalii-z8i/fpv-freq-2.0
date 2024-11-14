@@ -70,10 +70,10 @@ export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected
         <div className="sticky top-0 pt-5 pb-5 z-10">
             <div ref={elementRef}
                  className={`
-                    ${isVisible ? 'opacity-90' : 'opacity-0'}
+                    ${isVisible ? 'opacity-100' : 'opacity-0'}
                     transition delay-0 duration-500 ease-in-out
                     absolute w-screen top-0 h-full
-                    border-b border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700
+                    border-b border-gray-200 bg-gray-50 dark:bg-zinc-800 dark:border-zinc-700
                 `} style={{left: 'calc(-50vw + 50%)'}}></div>
             <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -82,7 +82,7 @@ export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected
                     </svg>
                 </div>
                 <input type="text"
-                        className="rounded-lg outline-none focus:rounded-b-none ps-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="rounded-lg outline-none focus:rounded-b-none ps-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="5.8 канал, або частота"
                         value={searchTerm}
                         onChange={(e) => { setSearchTerm(e.target?.value)}}
@@ -90,7 +90,7 @@ export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                 />
-                <ul className={`${searchTerm ? 'block' : 'hidden'} absolute bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-b-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
+                <ul className={`${searchTerm ? 'block' : 'hidden'} absolute bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-b-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}>
                     {channelsList()}
                 </ul>
             </div>

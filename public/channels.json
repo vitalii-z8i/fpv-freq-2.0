@@ -96,5 +96,14 @@
     { "id": "x5", "channel": "X5", "frequency": 5110 },
     { "id": "x6", "channel": "X6", "frequency": 5140 },
     { "id": "x7", "channel": "X7", "frequency": 5170 },
-    { "id": "x8", "channel": "X8", "frequency": 5200 }
+    { "id": "x8", "channel": "X8", "frequency": 5200 },
+
+    { "id": "s1", "channel": "S1", "frequency": 6002 },
+    { "id": "s2", "channel": "S2", "frequency": 6028 },
+    { "id": "s3", "channel": "S3", "frequency": 6054 },
+    { "id": "s4", "channel": "S4", "frequency": 6080 },
+    { "id": "s5", "channel": "S5", "frequency": 6106 },
+    { "id": "s6", "channel": "S6", "frequency": 6132 },
+    { "id": "s7", "channel": "S7", "frequency": 6158 },
+    { "id": "s8", "channel": "S8", "frequency": 6184 }
 ]

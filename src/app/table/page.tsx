@@ -42,7 +42,7 @@ export default function Table() {
             <div className="flex justify-between items-center mb-4">
                 <h2 className="font-bold text-center text-2xl">Таблиця Каналів</h2>
                 {(selectedChannels.length > 0) ? (
-                    <button onClick={clearSelection} title="Очистити" className="p-1 rounded-lg outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <button onClick={clearSelection} title="Очистити" className="p-1 rounded-lg outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
@@ -61,9 +61,12 @@ export default function Table() {
                             onClick={() => {toggleChannel(ch.id)}}
                         >
                             <div className={`
-                                    m-1 p-2 px-1 border box-border bg-gray-50 dark:bg-gray-700 rounded-lg relative
-                                    ${(isInterferred(ch.id)) ? 'bg-red-400 text-red-300 dark:bg-red-900 dark:text-red-400 dark:border-red-900' : ''}
-                                    ${(isSelected(ch.id)) ? 'border-blue-500 rounded-tr-none ' : 'border-gray-600'}
+                                    m-1 p-2 px-1 border box-border rounded-lg relative
+                                    ${
+                                        (isSelected(ch.id)) ? 'border-blue-500 dark:bg-zinc-700 rounded-tr-none '
+                                        : (isInterferred(ch.id)) ? 'bg-red-400 text-red-300 dark:bg-red-900 dark:text-red-400 dark:border-red-900'
+                                        : 'bg-gray-50 dark:border-zinc-600 dark:bg-zinc-700'
+                                    }
                                 `}>
                                 {(isSelected(ch.id)) && (
                                     <div className="absolute top-0 right-0 bg-blue-500 rounded-bl-lg">
