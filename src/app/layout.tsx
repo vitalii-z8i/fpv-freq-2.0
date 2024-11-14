@@ -69,14 +69,14 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
-        <div className="relative border-b border-gray-200 bg-gray-50 dark:bg-zinc-800 dark:border-zinc-700">
+        <div className="relative border-b border-gray-200 bg-stone-100 dark:bg-zinc-800 dark:border-zinc-700">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Logo/>
             <div className="text-xs md:text-sm z-10 bg-inherit absolute top-0 right-0 rounded-bl-md border-black dark:border-white border-b border-l py-1 px-2">Розробив - Друг Портер 🍺</div>
           </div>
         </div>
         <div className="min-h-dvh main-body max-w-screen">
-          <div className="mx-auto p-4 mb-20 max-w-screen-xl">
+          <div className="mx-auto p-4 pb-28 max-w-screen-xl">
             {children}
           </div>
         </div>
