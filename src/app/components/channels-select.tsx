@@ -73,7 +73,7 @@ export default function ChannelsSelect({ onSelected = (() => {}) }: { onSelected
                     ${isVisible ? 'opacity-100' : 'opacity-0'}
                     transition delay-0 duration-500 ease-in-out
                     absolute w-screen top-0 h-full
-                    border-b border-gray-200 bg-stone-100 dark:bg-zinc-800 dark:border-zinc-700
+                    bg-stone-100 dark:bg-zinc-800 shadow-lg
                 `} style={{left: 'calc(-50vw + 50%)'}}></div>
             <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
