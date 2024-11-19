@@ -52,7 +52,7 @@ export default function Table() {
             <p className="mb-2">Обрахунок вільних каналів в реальному часі.</p>
             <p className="mb-4 text-xs"> Активуйте зайняті канали через пошук або в таблиці, та спостерігайте які частоти залишаються вільними</p>
             <ChannelsSelect onSelected={(ch) => toggleChannel(ch.id)}/>
-            <ul className="grid grid-cols-4 md:grid-cols-8">
+            <ul className="grid grid-cols-4 md:grid-cols-8 pb-24">
                 {channels.map((ch) => {
                     return (
                         <li
