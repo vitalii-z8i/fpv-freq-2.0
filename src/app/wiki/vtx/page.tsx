@@ -8,7 +8,7 @@ export default function Vtx() {
     function vtxList() {
         return vtxTables.map(table => {
             return (
-                <li className="border border-x-2 first:border-t-2 last:border-b-2 md:border-0 border-gray-100 first:rounded-t-lg last:rounded-b-lg dark:border-zinc-700 py-2 px-2 md:px-0">
+                <li className="border border-x-2 first:border-t-2 last:border-b-2 border-gray-100 first:rounded-t-lg last:rounded-b-lg dark:border-zinc-700 py-2 px-2">
                     <Link
                         href={`/wiki/vtx/${table.key}`}
                         className="hover:opacity-80"
