@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 export default function Notification({ isOn, message }: { isOn: boolean, message: string }) {
     return (
         <div className="fixed top-14 left-0 z-30 w-full items-center px-3">

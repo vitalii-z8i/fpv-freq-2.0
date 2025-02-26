@@ -7,7 +7,7 @@ export default function Searchable<ResultType>({
     source,
     getKey,
     getLabel,
-    filterCriteria = ((_item: ResultType, searchTerm: string) => true),
+    filterCriteria = (() => true),
     onSelected = (() => {})
 }: {
     placeholder: string,
