@@ -1,11 +1,14 @@
 "use client";
 
-import { notFound, useParams } from "next/navigation"
-import vtxTables from "../../../../../public/vtx-tables.json"
-import Notification from "@/app/components/notification";
 import { useState } from "react";
+import { notFound, useParams, useRouter } from "next/navigation"
+
+import vtxTables from "@/../public/vtx-tables.json"
+import Notification from "@/app/components/notification";
+import SelectVTX from "@/app/components/select-vtx";
 
 export default function Page() {
+    const router = useRouter();
     const { key }: { key: string } = useParams()
     const vtxTable = vtxTables.find(table => table.key === key) as VTXTable
     const [showMsg, setShowMsg] = useState(false)
@@ -42,13 +45,21 @@ export default function Page() {
 
     return (
         <div className="pb-24">
+
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="font-bold text-center text-2xl">Таблиці для VTX</h2>
+            </div>
+            <p className="mb-2">Тут ви можете знайти таблиці зі схемою каналів для відеопередавачів (VTX Table) популярних моделей</p>
+
+            <SelectVTX onSelected={(vtx: VTXTable) => router.push(`/wiki/vtx/${vtx.key}`)}/>
+
             <h2 className="font-bold text-center text-2xl mb-4">{vtxTable.name}</h2>
             { (!!vtxTable.cli) ? (
                 codeBlock('Betafligh CLI', vtxTable.cli?.join('\n'))
             ) : '' }
 
             { (!!vtxTable.json) ? (
-                codeBlock('JSON', vtxTable.json)
+                codeBlock('JSON', JSON.stringify(vtxTable.json, null, 2))
             ) : '' }
 
             <Notification isOn={showMsg} message="Скопійовано."/>
