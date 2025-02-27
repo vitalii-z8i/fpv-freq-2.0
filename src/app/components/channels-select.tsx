@@ -1,3 +1,4 @@
+"use client";
 import channels from "../../../public/channels.json";
 import Searchable from "./searchable";
 

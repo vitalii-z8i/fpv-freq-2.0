@@ -3,10 +3,11 @@
 import channels from "../../../../public/channels.json";
 
 import React from "react";
+import { useParams, useRouter, notFound } from "next/navigation";
+
 import ChannelsSelect from "../../components/channels-select";
 import ChannelCompability from "../../components/channel-compability";
 import ChannelHarmonicas from "../../components/channel-harmonicas";
-import { useParams, useRouter, notFound } from "next/navigation";
 import Notification from "@/app/components/notification";
 
 export default function Channel() {
@@ -23,10 +24,17 @@ export default function Channel() {
         router.push(`/channels/${ch.id}`)
     }
 
-    function sharePage() {
-        const shareData = {
-            url: window.location.href,
+    async function sharePage() {
+        const img = await fetch(`/images/channels/${channel.id}.png`)
+        const blob = await img.blob()
+
+        const shareData: ShareData = {
             title: `Канал ${channel.channel} (${channel.frequency})`,
+            text: `Виліт! Канал ${channel.channel} (${channel.frequency})`,
+            files: [
+                new File([blob], `${channel.id}.png`, { type: "image/png" })
+            ],
+            url: window.location.href
         }
         if (navigator.canShare && navigator.canShare(shareData)) {
             navigator.share(shareData)
