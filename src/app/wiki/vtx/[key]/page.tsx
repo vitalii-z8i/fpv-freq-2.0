@@ -53,7 +53,7 @@ export default function Page() {
 
             <SelectVTX onSelected={(vtx: VTXTable) => router.push(`/wiki/vtx/${vtx.key}`)}/>
 
-            <h2 className="font-bold text-center text-2xl mb-4">{vtxTable.name}</h2>
+            <h2 className="font-bold text-center text-2xl my-4">{vtxTable.name}</h2>
             { (!!vtxTable.cli) ? (
                 codeBlock('Betafligh CLI', vtxTable.cli?.join('\n'))
             ) : '' }

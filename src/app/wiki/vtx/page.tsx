@@ -33,7 +33,7 @@ export default function Vtx() {
 
             <SelectVTX onSelected={(vtx: VTXTable) => router.push(`/wiki/vtx/${vtx.key}`)}/>
 
-            <ul className="mt-4">
+            <ul className="mt-4 mb-24">
                 {vtxList()}
             </ul>
         </>
