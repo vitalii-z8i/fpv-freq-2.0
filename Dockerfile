@@ -6,4 +6,5 @@ WORKDIR /var/www/app
 
 COPY . /var/www/app/
 
-CMD ["/bin/sh", "-c", "npx i ; npm run dev"]
+# CMD ["/bin/sh", "-c", "tail -f package.json"]
+CMD ["/bin/sh", "-c", "npm i ; npm run dev"]
