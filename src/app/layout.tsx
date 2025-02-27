@@ -72,7 +72,12 @@ export default function RootLayout({
         <div className="relative border-b border-zinc-200 bg-stone-100 dark:bg-zinc-800 dark:border-zinc-700">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Logo/>
-            <div className="text-xs md:text-sm z-10 bg-inherit absolute top-0 right-0 rounded-bl-md border-black dark:border-white border-b border-l py-1 px-2">Розробив - Друг Портер 🍺</div>
+            <div className="text-xs md:text-sm z-10 bg-inherit absolute top-0 right-0 rounded-bl-md border-black dark:border-white border-b border-l py-1 px-2">
+              Розробив - Друг Портер 🍺 <br/>
+              <a className="block text-base/4 md:text-lg text-blue-400 font-bold" href="https://send.monobank.ua/jar/6fu3u5EUAn">
+                Підтримати 💪
+              </a>
+            </div>
           </div>
         </div>
         <div className="min-h-full flex-[1_1_auto] main-body max-w-screen">

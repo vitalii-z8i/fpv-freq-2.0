@@ -1,9 +1,9 @@
 export default function Notification({ isOn, message }: { isOn: boolean, message: string }) {
     return (
         <div className="fixed top-14 left-0 z-30 w-full items-center px-3">
-            <div className={`${ isOn ? 'opacity-100' : 'opacity-0' }
+            <div className={`${ isOn ? 'opacity-100 visible' : 'opacity-0 hidden' }
              flex items-center
-             transition-opacity ease-in duration-600
+             transition-all ease-in duration-600
              border rounded-lg border-gray-300 dark:border-gray-600
              py-4 text-xl text-gray-700 dark:text-gray-100
              bg-white p-6 shadow-md outline outline-black/5 dark:bg-gray-800`}>
