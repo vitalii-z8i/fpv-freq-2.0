@@ -1,7 +1,9 @@
 // Cache name
 const channels = require('./channels.json');
 const vtxTables = require('./vtx-tables.json');
-const CACHE_NAME = 'fpv-freq-cache-v1';
+
+const { version } = require('../package.json');
+const CACHE_NAME = `fpv-freq-cache-${version}`;
 
 // Files to cache
 const urlsToCache = [
