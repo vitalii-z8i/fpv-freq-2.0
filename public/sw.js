@@ -1,9 +1,5 @@
 // Cache name
-const channels = require('./channels.json');
-const vtxTables = require('./vtx-tables.json');
-
-const { version } = require('../package.json');
-const CACHE_NAME = `fpv-freq-cache-${version}`;
+const CACHE_NAME = 'fpv-freq-cache-v1.1';
 
 // Files to cache
 const urlsToCache = [
@@ -23,15 +19,29 @@ const urlsToCache = [
   '/images/web-app-manifest-512x512.png'
 ];
 
-// Generate channel URLs
-channels.forEach(channel => {
-  urlsToCache.push(`/channels/${channel.id}.png`);
-  urlsToCache.push(`/images/channels/${channel.id}.png`);
+// Add channel images to cache
+const channelPrefixes = ['a', 'b', 'e', 'f', 'h', 'l', 'o', 'r', 's', 'u', 'x', '3-3g-a', '3-3g-b'];
+const channelNumbers = ['1', '2', '3', '4', '5', '6', '7', '8'];
+
+// Generate channel image URLs
+channelPrefixes.forEach(prefix => {
+  channelNumbers.forEach(number => {
+    urlsToCache.push(`/channels/${prefix}${number}`);
+    urlsToCache.push(`/images/channels/${prefix}${number}.png`);
+  });
 });
-// Generate vtx table URLs
-vtxTables.forEach(table => {
-  urlsToCache.push(`/wiki/vtx/${table.key}`);
+
+// Add special case for Foxeer L-band
+channelNumbers.forEach(number => {
+  urlsToCache.push(`/images/channels/l${number}-foxeer`);
+  urlsToCache.push(`/images/channels/l${number}-foxeer.png`);
 });
+
+['3-3g-a', '3-3g-b', '3-3g-c', '3-3g-d', '3-3g-e'].forEach(prefix => {
+  channelNumbers.forEach(number => {
+    urlsToCache.push(`/channels/${prefix}${number}-geprc`);
+  });
+})
 
 // Install event - pre-cache resources
 self.addEventListener('install', event => {
