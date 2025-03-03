@@ -25,23 +25,49 @@ export default function Channel() {
     }
 
     async function sharePage() {
-        const img = await fetch(`/images/channels/${channel.id}.png`)
-        const blob = await img.blob()
+        try {
+            // Try to fetch the image
+            const img = await fetch(`/images/channels/${channel.id}.png`)
+            const blob = await img.blob()
 
-        const shareData: ShareData = {
-            title: `Канал ${channel.channel} (${channel.frequency})`,
-            text: `Виліт! Канал ${channel.channel} (${channel.frequency})`,
-            files: [
-                new File([blob], `${channel.id}.png`, { type: "image/png" })
-            ],
-            url: window.location.href
-        }
-        if (navigator.canShare && navigator.canShare(shareData)) {
-            navigator.share(shareData)
-        } else {
-            navigator.clipboard.writeText(window.location.href)
-            setShowMsg(true)
-            setTimeout(() => { setShowMsg(false) }, 3000)
+            const shareData: ShareData = {
+                title: `Канал ${channel.channel} (${channel.frequency})`,
+                text: `Виліт! Канал ${channel.channel} (${channel.frequency})`,
+                files: [
+                    new File([blob], `${channel.id}.png`, { type: "image/png" })
+                ],
+                url: window.location.href
+            }
+
+            if (navigator.canShare && navigator.canShare(shareData)) {
+                navigator.share(shareData)
+            } else {
+                navigator.clipboard.writeText(window.location.href)
+                setShowMsg(true)
+                setTimeout(() => { setShowMsg(false) }, 3000)
+            }
+        } catch {
+            // If fetching the image fails (e.g., when offline), share without the image
+            try {
+                const textShareData: ShareData = {
+                    title: `Канал ${channel.channel} (${channel.frequency})`,
+                    text: `Виліт! Канал ${channel.channel} (${channel.frequency})`,
+                    url: window.location.href
+                }
+
+                if (navigator.canShare && navigator.canShare(textShareData)) {
+                    navigator.share(textShareData)
+                } else {
+                    navigator.clipboard.writeText(window.location.href)
+                    setShowMsg(true)
+                    setTimeout(() => { setShowMsg(false) }, 3000)
+                }
+            } catch {
+                // Fallback to clipboard copy if sharing fails
+                navigator.clipboard.writeText(window.location.href)
+                setShowMsg(true)
+                setTimeout(() => { setShowMsg(false) }, 3000)
+            }
         }
     }
 
