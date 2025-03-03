@@ -6,6 +6,7 @@ import "./globals.css";
 import Logo from "./components/logo";
 import Nav from "./components/nav/nav";
 import NavItem from "./components/nav/nav-item";
+import OfflineIndicator from "./components/offline-indicator";
 
 
 const geistSans = localFont({
@@ -68,6 +69,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js').then(
+                    function(registration) {
+                      console.log('Service Worker registration successful with scope: ', registration.scope);
+                    },
+                    function(error) {
+                      console.log('Service Worker registration failed: ', error);
+                    }
+                  );
+                });
+              }
+            `,
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <div className="relative border-b border-zinc-200 bg-stone-100 dark:bg-zinc-800 dark:border-zinc-700">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -84,6 +105,7 @@ export default function RootLayout({
           <div className="m-auto p-4 max-w-screen-xl min-h-full">
             {children}
           </div>
+          <OfflineIndicator />
         </div>
         <Nav>
           <NavItem href="/">
