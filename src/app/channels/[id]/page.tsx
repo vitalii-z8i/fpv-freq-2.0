@@ -46,7 +46,7 @@ export default function Channel() {
                 setShowMsg(true)
                 setTimeout(() => { setShowMsg(false) }, 3000)
             }
-        } catch (error) {
+        } catch {
             // If fetching the image fails (e.g., when offline), share without the image
             try {
                 const textShareData: ShareData = {
@@ -62,7 +62,7 @@ export default function Channel() {
                     setShowMsg(true)
                     setTimeout(() => { setShowMsg(false) }, 3000)
                 }
-            } catch (shareError) {
+            } catch {
                 // Fallback to clipboard copy if sharing fails
                 navigator.clipboard.writeText(window.location.href)
                 setShowMsg(true)
